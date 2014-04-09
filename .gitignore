@@ -3,3 +3,14 @@ pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.next
 release.properties
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+.classpath
+.settings/
+*.launch
