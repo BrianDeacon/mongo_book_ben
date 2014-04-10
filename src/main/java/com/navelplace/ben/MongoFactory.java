@@ -62,7 +62,10 @@ public class MongoFactory
 	
 	public static void close() {
 		closed = true;
-		SingletonHolder.getMongoClient().close();
+		MongoClient mongoClient = SingletonHolder.getMongoClient();
+		if (mongoClient != null) {
+			mongoClient.close();
+		}
 	}
 }
 

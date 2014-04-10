@@ -1,23 +1,45 @@
 package com.navelplace.ben.entities;
 
-import java.util.UUID;
-
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Id;
 
-public class BaseEntity
+public abstract class BaseEntity
 {
 	@Id
-	private String id = UUID.randomUUID().toString();
+	private ObjectId id = new ObjectId();
 
-	public String getId()
+	public ObjectId getId()
 	{
 		return id;
 	}
 
-	public void setId(String id)
+	@Override
+	public int hashCode()
 	{
-		this.id = id;
+		return id.hashCode();
 	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj != null && obj.getClass().equals(getClass())) {
+			BaseEntity other = (BaseEntity) obj;
+			return id.equals(other.id);
+		}
+		else {
+			return false;
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE);
+	}
+	
+	
 	
 	
 }

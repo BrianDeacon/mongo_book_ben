@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
 
 /**
  * Company
@@ -18,7 +19,7 @@ public class Company extends BaseEntity
 	private String name;
 	private String stateId;
 	
-	@Embedded("documents")
+	@Reference
 	private List<Document> documents = new ArrayList<>();
 
 	public String getName()

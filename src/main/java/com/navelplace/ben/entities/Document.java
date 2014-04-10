@@ -1,5 +1,6 @@
 package com.navelplace.ben.entities;
 
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Reference;
 
@@ -33,6 +34,11 @@ public class Document extends BaseEntity
 	public void setCompany(Company company)
 	{
 		this.company = company;
+	}
+	
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toStringExclude(this, "company");
 	}
 	
 	

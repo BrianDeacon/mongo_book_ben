@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
 
 /**
  * User: 
@@ -15,7 +16,7 @@ import org.mongodb.morphia.annotations.Entity;
 public class User extends BaseEntity
 {
 	
-	@Embedded("companies")
+	@Reference
     private List<Company> companies = new ArrayList<>();
 
 	public List<Company> getCompanies()
